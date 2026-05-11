@@ -1,30 +1,38 @@
-// object = A collection of related properties and/or methods
-//                Can represent real world objects (people, products, places)
-//                object = {key:value,
-//                                 function()}
+// singleton
+// Object.create
 
-const person1 = {
-    firstName: "Mahnoor",
-    lastName: "hamad",
-    age: 24,
-    isEmployed: true,
-    sayHello: function(){console.log("Hi! I am mahnoor!")},
-    read: function(){console.log("I am reading")},
+// object literals
+
+const mySym = Symbol("key1")
+
+
+const JsUser = {
+    name: "mahnoor",
+    "full name": "mahnoor hamad",
+    [mySym]: "mykey1",                  //symbol written in [] if without it ,it will be string
+    age: 18,
+    location: "Jaipur",
+    email: "mahnoor@google.com",
+    isLoggedIn: false,
+    lastLoginDays: ["Monday", "Saturday"]
 }
 
-console.log(person1.firstName);
-person1.sayHello();
-person1.read();
+// console.log(JsUser.email)
+// console.log(JsUser["email"])
+// console.log(JsUser["full name"])
+// console.log(JsUser[mySym])
 
-const person2 = {
-    firstName: "Mahnoor",
-    lastName: "hamad",
-    age: 24,
-    isEmployed: true,
-    sayHello: function(){console.log("Hi! I am mahnoor!")},
-    read: function(){console.log("I am reading")},
+JsUser.email = "mahnoor@chatgpt.com"
+// Object.freeze(JsUser)
+JsUser.email = "mahnoor@microsoft.com"
+// console.log(JsUser);
+
+JsUser.greeting = function(){
+    console.log("Hello JS user");
+}
+JsUser.greetingTwo = function(){
+    console.log(`Hello JS user, ${this.name}`);
 }
 
-console.log(person1.firstName);
-person2.sayHello();
-person2.read();
+console.log(JsUser.greeting());
+console.log(JsUser.greetingTwo());
